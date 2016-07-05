@@ -69,7 +69,7 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'baike.pipelines.JsonWithEncodingPipeline': 800,
+    '{{.project_name}}.pipelines.JsonWithEncodingPipeline': 800,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

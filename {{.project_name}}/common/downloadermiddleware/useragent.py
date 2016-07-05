@@ -1,7 +1,10 @@
 #coding:utf8
 import random
 import agent
-from scrapy import log
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 
 class RandomUserAgent(object):
@@ -22,7 +25,7 @@ class RandomUserAgent(object):
 
 
 class PCUserAgent(object):
-    '''模拟手机浏览器'''
+    '''模拟电脑浏览器'''
     def __init__(self, user_agent='Scrapy'):
         self.user_agent = random.choice(agent.AGENTS_PC)
 
@@ -32,10 +35,10 @@ class PCUserAgent(object):
 
 
 class RandomPCAgent(object):
-    '''模拟手机浏览器'''
+    '''随机替换模拟电脑浏览器'''
     def process_request(self, request, spider):
         request.headers.setdefault(b'User-Agent', random.choice(agent.AGENTS_PC))
-        #log.msg(request.headers["User-Agent"], level=log.INFO)
+        logger.debug(request.headers['User-Agent'])
 
 
 class PhoneUserAgent(object):
@@ -48,6 +51,6 @@ class PhoneUserAgent(object):
 
 
 class RandomPhoneAgent(object):
-    '''模拟手机浏览器'''
+    '''随机替换模拟手机浏览器'''
     def process_request(self, request, spider):
         request.headers.setdefault(b'User-Agent', random.choice(agent.AGENTS_PHONE))
