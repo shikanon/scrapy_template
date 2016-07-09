@@ -5,7 +5,7 @@ from scrapy import log
 
 class {{.project_name}}Spider(scrapy.Spider):
     name = "{{.project_name}}"
-    allowed_domains = ["baidu.com"]
+    allowed_domains = ["xxx.com"]
     start_urls = [
         "http://baike.baidu.com/renwu"
     ]
