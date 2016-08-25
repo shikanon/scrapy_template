@@ -43,8 +43,7 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
 }
 
-# Enable and configure HTTP caching (disabled by default)
-# See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
+# 开启HTTP缓存
 #HTTPCACHE_ENABLED = True
 #HTTPCACHE_EXPIRATION_SECS = 0
 #HTTPCACHE_DIR = 'httpcache'
@@ -62,3 +61,6 @@ FEED_FORMAT = "jsonlines"
 # docker run --name scrapy-redis -p 6379:6379 -v /docker/host/dir:/data -d redis
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+
+# 爬虫持久化运行命令
+# scrapy crawl {{.project_name}} -s JOBDIR=crawls/somespider-1
