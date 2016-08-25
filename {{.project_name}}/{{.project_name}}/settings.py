@@ -56,9 +56,8 @@ FEED_FORMAT = "jsonlines"
 
 # 调用redis做调度器
 # pip install scrapy-redis
-# 用docker安装redis
-# docker pull redis
-# docker run --name scrapy-redis -p 6379:6379 -v /docker/host/dir:/data -d redis
+# 用docker启动redis
+# docker run --name scrapy-redis -p 6379:6379 -v /docker/host/dir:/data -d redis redis-server --appendonly yes
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 
