@@ -1,22 +1,15 @@
 # -*- coding: utf-8 -*-
 
 # Scrapy settings for crawler project
-#
-# For simplicity, this file contains only settings considered important or
-# commonly used. You can find more settings consulting the documentation:
-#
-#     http://doc.scrapy.org/en/latest/topics/settings.html
-#     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
+
 
 BOT_NAME = '{{.project_name}}'
 
 SPIDER_MODULES = ['{{.project_name}}.spiders']
 NEWSPIDER_MODULE = '{{.project_name}}.spiders'
 
+# 日志等级
 LOG_LEVEL = "INFO"
-# Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'baike (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -24,28 +17,17 @@ ROBOTSTXT_OBEY = False
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
-# Configure a delay for requests for the same website (default: 0)
-# See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
-# See also autothrottle settings and docs
+# 爬虫速度限制
 #DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
+# CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
 
-# Disable cookies (enabled by default)
+# 关闭cookies
 COOKIES_ENABLED = False
 
 #Ajax Crawlable Pages
 AJAXCRAWL_ENABLED = True
-
-# Disable Telnet Console (enabled by default)
-#TELNETCONSOLE_ENABLED = False
-
-# Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#   'Accept-Language': 'en',
-#}
 
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
@@ -55,6 +37,7 @@ AJAXCRAWL_ENABLED = True
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
+#加入随机USER-AGENT
 DOWNLOADER_MIDDLEWARES = {
     'common.downloadermiddleware.useragent.RandomPCAgent': 543,
     'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
@@ -68,9 +51,6 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-    '{{.project_name}}.pipelines.JsonWithEncodingPipeline': 800,
-}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -92,3 +72,11 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# 写入jsonline
+FEED_URI = "file:///home/crawler/crawler/baike_export.json"
+FEED_FORMAT = "jsonlines"
+
+# 调用redis
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
