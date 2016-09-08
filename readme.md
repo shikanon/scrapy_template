@@ -16,3 +16,7 @@ author: shikanon <shikanon@foxmail.com>
 `scrapy list`
 可以看到已生成的项目
 运行`scrapy crawl 项目名称` 开始抓取任务。
+
+example中包括一些爬虫生成的：
+1. 一个百度百科的爬虫。
+2. 一个CNKI知网期刊和文章的爬虫。
