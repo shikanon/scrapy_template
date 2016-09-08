@@ -6,7 +6,7 @@ from baike.items import BaikeItem
 from scrapy import log
 
 class BaiduSpider(scrapy.Spider):
-    name = "baidu_baike"
+    name = "baidu"
     allowed_domains = ["baidu.com"]
     start_urls = [
         "http://baike.baidu.com/renwu"

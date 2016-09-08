@@ -11,9 +11,6 @@ logger = logging.getLogger(__name__)
 class baikeSpider(scrapy.Spider):
     name = "baike"
     allowed_domains = ["baike.baidu.com"]
-##    start_urls = [
-##        "http://baike.baidu.com/renwu"
-##    ]
 
     def start_requests(self):
         payload = {"contentLength":"40",
