@@ -19,4 +19,5 @@ author: shikanon <shikanon@foxmail.com>
 
 example中包括一些爬虫生成的：
 1. 一个百度百科的爬虫。
-2. 一个CNKI知网期刊和文章的爬虫。
+2. 一个CNKI中国知网期刊和文章的爬虫。
+3. 一个新浪微博的爬虫。

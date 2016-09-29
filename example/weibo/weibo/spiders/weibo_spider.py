@@ -1,13 +1,10 @@
 #coding:utf8
 import scrapy
-from {{.project_name}}.items import {{.project_name}}Item
-import logging
+from weibo.items import weiboItem
+from scrapy import log
 
-logger = logging.getLogger(__name__)
-
-
-class {{.project_name}}Spider(scrapy.Spider):
-    name = "{{.project_name}}"
+class weiboSpider(scrapy.Spider):
+    name = "weibo"
     allowed_domains = ["xxx.com"]
     start_urls = [
         ""
